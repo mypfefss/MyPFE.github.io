@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Registration - MyPFE 14.0</title>
+    <meta name="description" content="Get in touch with MyPFE 14.0 organizers and register for the event. Contact IEEE FSS Student Branch, CPC FSS, and GDG on Campus FSS.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../assets/images/mypfe-logo.png" alt="MyPFE 14.0" class="logo">
+                <span class="logo-text">MyPFE 14.0</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="program.html" class="nav-link">Program</a>
+                <a href="sponsors.html" class="nav-link">Partners</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+                <a href="#register" class="nav-link btn-primary">Register Now</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="header-content">
+                <h1>Contact & Registration</h1>
+                <p>Get in touch with us and secure your spot at MyPFE 14.0</p>
+                <nav class="breadcrumb">
+                    <a href="../index.html">Home</a>
+                    <span>/</span>
+                    <span>Contact</span>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section class="registration-section" id="register">
+        <div class="container">
+            <div class="section-header">
+                <h2>Register for MyPFE 14.0</h2>
+                <p>Choose your registration type and join us on November 17, 2025</p>
+            </div>
+            
+            <div class="registration-options">
+                <div class="registration-card student-card">
+                    <div class="card-header">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Student Registration</h3>
+                        <p class="price">FREE</p>
+                    </div>
+                    <div class="card-content">
+                        <ul class="benefits-list">
+                            <li><i class="fas fa-check"></i> Access to all workshops</li>
+                            <li><i class="fas fa-check"></i> Company booth visits</li>
+                            <li><i class="fas fa-check"></i> Networking opportunities</li>
+                            <li><i class="fas fa-check"></i> Welcome pack</li>
+                            <li><i class="fas fa-check"></i> Lunch included</li>
+                            <li><i class="fas fa-check"></i> Certificates</li>
+                        </ul>
+                        <button class="btn btn-primary register-btn" data-type="student">Register as Student</button>
+                    </div>
+                </div>
+
+                <div class="registration-card company-card">
+                    <div class="card-header">
+                        <i class="fas fa-building"></i>
+                        <h3>Company Participation</h3>
+                        <p class="price">Starting from 1000 TND</p>
+                    </div>
+                    <div class="card-content">
+                        <ul class="benefits-list">
+                            <li><i class="fas fa-check"></i> Exhibition booth</li>
+                            <li><i class="fas fa-check"></i> Brand visibility</li>
+                            <li><i class="fas fa-check"></i> Access to student database</li>
+                            <li><i class="fas fa-check"></i> Workshop hosting</li>
+                            <li><i class="fas fa-check"></i> Recruitment opportunities</li>
+                            <li><i class="fas fa-check"></i> Custom packages available</li>
+                        </ul>
+                        <a href="sponsors.html" class="btn btn-primary">View Partnership Packages</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form Modal -->
+    <div class="modal" id="registrationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Student Registration</h3>
+                <span class="close" id="closeModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form class="registration-form" id="registrationForm">
+                    <div class="form-section">
+                        <h4>Personal Information</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section" id="academicSection">
+                        <h4>Academic Information</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="university">University/Institution *</label>
+                                <input type="text" id="university" name="university" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="field">Field of Study *</label>
+                                <select id="field" name="field" required>
+                                    <option value="">Select your field</option>
+                                    <option value="computer-science">Computer Science</option>
+                                    <option value="software-engineering">Software Engineering</option>
+                                    <option value="data-science">Data Science</option>
+                                    <option value="cybersecurity">Cybersecurity</option>
+                                    <option value="ai-ml">AI & Machine Learning</option>
+                                    <option value="networks">Networks & Telecommunications</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="level">Academic Level *</label>
+                                <select id="level" name="level" required>
+                                    <option value="">Select your level</option>
+                                    <option value="license-1">License 1</option>
+                                    <option value="license-2">License 2</option>
+                                    <option value="license-3">License 3</option>
+                                    <option value="master-1">Master 1</option>
+                                    <option value="master-2">Master 2</option>
+                                    <option value="engineering">Engineering Student</option>
+                                    <option value="phd">PhD Student</option>
+                                    <option value="graduate">Recent Graduate</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="graduation">Expected Graduation</label>
+                                <input type="month" id="graduation" name="graduation">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h4>Workshop Preferences</h4>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="workshops" value="ai-ml">
+                                <span class="checkmark"></span>
+                                AI & Machine Learning
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="workshops" value="web-dev">
+                                <span class="checkmark"></span>
+                                Web Development
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="workshops" value="mobile-dev">
+                                <span class="checkmark"></span>
+                                Mobile Development
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="workshops" value="cybersecurity">
+                                <span class="checkmark"></span>
+                                Cybersecurity
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="workshops" value="cloud-computing">
+                                <span class="checkmark"></span>
+                                Cloud Computing
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="workshops" value="data-science">
+                                <span class="checkmark"></span>
+                                Data Science
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h4>Additional Information</h4>
+                        <div class="form-group">
+                            <label for="interests">Career Interests</label>
+                            <textarea id="interests" name="interests" rows="3" placeholder="Tell us about your career goals and interests..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="experience">Experience Level</label>
+                            <select id="experience" name="experience">
+                                <option value="beginner">Beginner</option>
+                                <option value="intermediate">Intermediate</option>
+                                <option value="advanced">Advanced</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelRegistration">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Complete Registration</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Information -->
+    <section class="contact-information">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Information</h2>
+                <p>Get in touch with our organizing team</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Med Yassine Abid</h3>
+                        <p class="position">Event Chair</p>
+                        <div class="contact-methods">
+                            <a href="mailto:abid.mohamed.yassine@ieee.org" class="contact-method">
+                                <i class="fas fa-envelope"></i>
+                                abid.mohamed.yassine@ieee.org
+                            </a>
+                            <a href="tel:+21628592003" class="contact-method">
+                                <i class="fas fa-phone"></i>
+                                +216 28 592 003
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Emna Mnejja</h3>
+                        <p class="position">Logistics Manager</p>
+                        <div class="contact-methods">
+                            <a href="mailto:emnamnejja1808@mail.com" class="contact-method">
+                                <i class="fas fa-envelope"></i>
+                                emnamnejja1808@mail.com
+                            </a>
+                            <a href="tel:+21699332442" class="contact-method">
+                                <i class="fas fa-phone"></i>
+                                +216 99 332 442
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-avatar">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Habib M. Kammoun</h3>
+                        <p class="position">Department Head</p>
+                        <div class="contact-methods">
+                            <a href="mailto:habib.kammoun@ieee.org" class="contact-method">
+                                <i class="fas fa-envelope"></i>
+                                habib.kammoun@ieee.org
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Directions -->
+    <section class="location-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Event Location</h2>
+                <p>Find us at the Faculty of Sciences of Sfax</p>
+            </div>
+            
+            <div class="location-content">
+                <div class="location-info">
+                    <div class="location-card">
+                        <h3><i class="fas fa-map-marker-alt"></i> Address</h3>
+                        <p>Faculty of Sciences of Sfax<br>
+                        Route Soukra<br>
+                        Sfax 3038, Tunisia</p>
+                    </div>
+                    
+                    <div class="location-features">
+                        <h3>Venue Features</h3>
+                        <div class="features-grid">
+                            <div class="feature">
+                                <i class="fas fa-wifi"></i>
+                                <span>Free High-Speed WiFi</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-parking"></i>
+                                <span>Free Parking</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-accessible-icon"></i>
+                                <span>Accessible Facilities</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-utensils"></i>
+                                <span>Catering Services</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-air-freshener"></i>
+                                <span>Air Conditioning</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-camera"></i>
+                                <span>Photography Services</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="transportation">
+                        <h3>Transportation</h3>
+                        <div class="transport-options">
+                            <div class="transport-option">
+                                <i class="fas fa-bus"></i>
+                                <div>
+                                    <h4>Public Transport</h4>
+                                    <p>Bus lines 12, 15, and 23 stop near the faculty</p>
+                                </div>
+                            </div>
+                            <div class="transport-option">
+                                <i class="fas fa-taxi"></i>
+                                <div>
+                                    <h4>Taxi</h4>
+                                    <p>Approximately 15-20 minutes from Sfax city center</p>
+                                </div>
+                            </div>
+                            <div class="transport-option">
+                                <i class="fas fa-car"></i>
+                                <div>
+                                    <h4>By Car</h4>
+                                    <p>Free parking available on campus</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="location-map">
+                    <div class="map-container">
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <h3>Interactive Map</h3>
+                            <p>Detailed campus map and directions will be available soon</p>
+                            <a href="#" class="btn btn-outline">Get Directions</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about MyPFE 14.0</p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Is registration really free for students?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Student registration is completely free and includes access to all workshops, networking sessions, lunch, and a welcome pack.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What should I bring to the event?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Bring your student ID, copies of your CV, a notebook for taking notes, and your laptop for hands-on workshops.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Are the workshops suitable for beginners?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We offer workshops for all skill levels, from beginner to advanced. Each workshop clearly indicates its difficulty level.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Can I attend if I'm not from FSS?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! MyPFE 14.0 is open to all students and recent graduates, regardless of their university or institution.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Will certificates be provided?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! All registered participants will receive a certificate of attendance, and workshop participants will get specialized certificates.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>How can companies participate?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Companies can participate through our partnership packages (Bronze, Silver, Gold, Diamond). Visit our Partners page for detailed information.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>MyPFE 14.0</h4>
+                    <p>Make Your Professional Future Efficient - The annual gathering bringing together students and industry professionals.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="about.html">About</a>
+                    <a href="program.html">Program</a>
+                    <a href="sponsors.html">Partners</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-envelope"></i> abid.mohamed.yassine@ieee.org</p>
+                    <p><i class="fas fa-phone"></i> +216 28 592 003</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Faculty of Sciences of Sfax</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Organizers</h4>
+                    <a href="#">IEEE FSS Student Branch</a>
+                    <a href="#">CPC FSS</a>
+                    <a href="#">GDG on Campus FSS</a>
+                    <a href="#">Faculty of Sciences of Sfax</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MyPFE 14.0. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
