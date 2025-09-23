@@ -155,6 +155,12 @@ h4 { font-size: 1.5rem; }
     width: 100%;
 }
 
+/* Remove underline for primary nav button (Register Now) */
+.nav-link.btn-primary::after,
+.nav-link.btn-primary:hover::after {
+    display: none;
+}
+
 .nav-toggle {
     display: none;
     flex-direction: column;
@@ -524,6 +530,23 @@ h4 { font-size: 1.5rem; }
     color: var(--primary-color);
 }
 
+/* Make outline buttons in registration sections near-white by default */
+.registration-cta .btn-outline {
+    border-color: #f8f9fa;
+    color: #f8f9fa;
+}
+
+.registration-cta .btn-outline:hover {
+    background: #f8f9fa;
+    color: var(--primary-color);
+}
+
+/* Ensure all buttons inside the registration CTA have a near-white border */
+.registration-cta .cta-buttons .btn,
+.registration-cta .cta-buttons .btn-outline {
+    border-color: #f8f9fa;
+}
+
 /* Footer */
 .footer {
     background: var(--text-color);
@@ -604,28 +627,7 @@ h4 { font-size: 1.5rem; }
     opacity: 0.9;
 }
 
-.breadcrumb {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 1rem;
-}
-
-.breadcrumb a {
-    color: var(--white);
-    text-decoration: none;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-}
-
-.breadcrumb a:hover {
-    opacity: 1;
-}
-
-.breadcrumb span {
-    opacity: 0.6;
-}
+/* breadcrumb styles removed - breadcrumbs no longer used */
 
 /* About Page Styles */
 .event-overview {
@@ -1195,26 +1197,11 @@ h4 { font-size: 1.5rem; }
 }
 
 /* Additional Sections */
-.mypfe-expo,
 .why-trust {
     padding: 6rem 0;
 }
 
-.mypfe-expo {
-    background: var(--background-light);
-}
-
-.expo-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-}
-
-.expo-features {
-    display: grid;
-    gap: 2rem;
-}
+/* .mypfe-expo styles removed - section deleted from HTML */
 
 .expo-feature {
     display: flex;
@@ -1509,20 +1496,13 @@ h4 { font-size: 1.5rem; }
 }
 
 .schedule-item::before {
-    content: '';
-    position: absolute;
-    left: 91px;
-    top: 1rem;
-    width: 20px;
-    height: 20px;
-    background: var(--primary-color);
-    border-radius: 50%;
-    border: 4px solid var(--background-light);
+    /* removed decorative circle */
+    display: none;
 }
 
 .schedule-item.featured::before {
-    background: var(--accent-color);
-    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+    /* featured marker removed as well */
+    display: none;
 }
 
 .schedule-time {
@@ -1536,7 +1516,7 @@ h4 { font-size: 1.5rem; }
     display: block;
     font-size: 1.1rem;
     font-weight: 600;
-    color: var(--primary-color);
+    color: #f8f9fa; /* near-white to match background */
 }
 
 .schedule-time .duration {
@@ -2203,7 +2183,9 @@ h4 { font-size: 1.5rem; }
     }
 
     .schedule-item::before {
-        left: 11px;
+    left: 11px;
+    /* keep decorative marker hidden on small screens too */
+    display: none;
     }
 
     .schedule-time {

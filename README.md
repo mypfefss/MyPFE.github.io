@@ -11,9 +11,9 @@ This website is designed for MyPFE 14.0, a leading job fair organized by the Fac
 - **Event**: Make Your Professional Future Efficient 14.0
 - **Date**: November 17, 2025
 - **Location**: Faculty of Sciences of Sfax, Tunisia
-- **Expected Attendees**: 3500+ students
-- **Companies**: 50+ participating companies
-- **Workshops**: 20+ technical sessions
+- **Expected Attendees**: 350+ students
+- **Companies**: 20+ participating companies
+- **Workshops**: 5+ technical sessions
 
 ## 🏗️ Website Structure
 
@@ -95,7 +95,7 @@ The website is fully responsive and optimized for:
 
 ### Faculty of Sciences of Sfax
 - **Founded**: 1987
-- **Students**: 3500+
+- **Students**: 350+
 - **Professors**: 435+
 
 ### IEEE FSS Student Branch
