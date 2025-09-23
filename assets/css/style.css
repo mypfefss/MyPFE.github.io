@@ -530,6 +530,11 @@ h4 { font-size: 1.5rem; }
     color: var(--primary-color);
 }
 
+/* make primary CTA border match the site's text color variable */
+.cta .btn.btn-primary {
+    border-color: var(--text-color);
+}
+
 /* Make outline buttons in registration sections near-white by default */
 .registration-cta .btn-outline {
     border-color: #f8f9fa;
@@ -971,10 +976,33 @@ h4 { font-size: 1.5rem; }
 }
 
 .packages-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    display: flex;
+    flex-direction: row;
     gap: 2rem;
     margin-top: 3rem;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    /* increase effective width to give package cards more room */
+    width: calc(100% + 320px);
+    margin-left: -160px;
+    overflow: visible; /* keep no scroll */
+}
+
+/* size cards to occupy four columns without overflow */
+.package-card {
+    box-sizing: border-box;
+    flex: 0 0 calc((100% - 8rem) / 4);
+    max-width: calc((100% - 8rem) / 4);
+    padding: 2rem;
+}
+
+/* fallback: allow wrapping on smaller screens */
+@media (max-width: 1100px) {
+    .package-card { flex: 0 0 calc((100% - 2rem) / 2); max-width: none; }
+}
+@media (max-width: 600px) {
+    .packages-grid { flex-wrap: wrap; }
+    .package-card { flex: 0 0 100%; }
 }
 
 .package-card {
@@ -985,6 +1013,9 @@ h4 { font-size: 1.5rem; }
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    
 }
 
 .package-card:hover {
@@ -1041,10 +1072,12 @@ h4 { font-size: 1.5rem; }
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--primary-color);
+    
 }
 
 .package-features {
     margin-bottom: 2rem;
+    flex: 1 1 auto;
 }
 
 .package-features h4 {
@@ -1058,6 +1091,16 @@ h4 { font-size: 1.5rem; }
 .package-features ul {
     list-style: none;
     padding: 0;
+}
+
+/* Make package buttons fit their text only and stay pinned to the bottom */
+.package-card .btn,
+.package-card .btn-outline {
+    display: inline-flex;
+    width: auto;
+    padding: 8px 18px; /* keep reasonable button padding */
+    margin-top: auto; /* pin to bottom */
+    align-self: center;
 }
 
 .package-features li {
@@ -1780,6 +1823,7 @@ h4 { font-size: 1.5rem; }
     gap: 3rem;
     max-width: 900px;
     margin: 0 auto;
+    align-items: stretch;
 }
 
 .registration-card {
@@ -1788,6 +1832,8 @@ h4 { font-size: 1.5rem; }
     padding: 2rem;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .registration-card:hover {
@@ -1815,6 +1861,20 @@ h4 { font-size: 1.5rem; }
     color: var(--accent-color);
 }
 
+/* ensure card content grows and buttons align to bottom */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+.card-content .btn {
+    margin-top: auto;
+    align-self: center;
+    display: inline-flex;
+    width: auto;
+}
+
 .benefits-list {
     list-style: none;
     padding: 0;
@@ -1832,6 +1892,11 @@ h4 { font-size: 1.5rem; }
 
 .benefits-list li i {
     color: var(--accent-color);
+}
+
+/* add a little breathing room above the first benefit in the student card */
+.student-card .benefits-list {
+    margin-top: 3rem;
 }
 
 /* Modal Styles */
