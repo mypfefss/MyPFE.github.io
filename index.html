@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Conference 2025 — Modern Business Conference</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#hero" class="brand">
+        <img src="assets/logo.svg" alt="Conference logo" class="logo">
+        <span class="brand-name">ConfPro 2025</span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <ul class="nav-list">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#speakers">Speakers</a></li>
+          <li><a href="#schedule">Schedule</a></li>
+          <li><a href="#sponsors">Sponsors</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <span class="hamburger"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1>Modern Business Conference 2025</h1>
+          <p class="lead">Inspire. Connect. Innovate. Join industry leaders for two days of strategy, product thinking, and growth.</p>
+          <p class="actions">
+            <a class="btn btn-primary" href="#register">Register</a>
+            <a class="btn" href="#about">Learn more</a>
+          </p>
+        </div>
+        <div class="hero-media" aria-hidden="true">
+          <div class="card">
+            <p class="meta">Sept 30 — Oct 1 · New York</p>
+            <h3>Keynote: The Future of Work</h3>
+            <p>Practical strategies for scaling teams and culture in a hybrid world.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section about">
+      <div class="container">
+        <h2>About the Conference</h2>
+        <p>ConfPro 2025 gathers executives, product leaders, and entrepreneurs to discuss the future of business and technology. Expect practical sessions, networking, and hands-on workshops.</p>
+      </div>
+    </section>
+
+    <section id="speakers" class="section speakers">
+      <div class="container">
+        <h2>Speakers</h2>
+        <div class="grid speakers-grid">
+          <article class="speaker">
+            <img src="https://via.placeholder.com/160" alt="Speaker photo">
+            <h3>Alex Morgan</h3>
+            <p class="role">CEO, Innovate Labs</p>
+          </article>
+          <article class="speaker">
+            <img src="https://via.placeholder.com/160" alt="Speaker photo">
+            <h3>Sana Patel</h3>
+            <p class="role">Head of Product, Atlas</p>
+          </article>
+          <article class="speaker">
+            <img src="https://via.placeholder.com/160" alt="Speaker photo">
+            <h3>Dr. Kim Lee</h3>
+            <p class="role">Research Lead, FutureWorks</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="schedule" class="section schedule">
+      <div class="container">
+        <h2>Schedule</h2>
+        <div class="schedule-list">
+          <div class="schedule-item">
+            <time>09:00</time>
+            <div>
+              <h4>Opening Remarks</h4>
+              <p>Welcome and conference overview.</p>
+            </div>
+          </div>
+          <div class="schedule-item">
+            <time>10:00</time>
+            <div>
+              <h4>Keynote: The Future of Work</h4>
+              <p>Alex Morgan</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sponsors" class="section sponsors">
+      <div class="container">
+        <h2>Sponsors</h2>
+        <div class="grid sponsor-grid">
+          <div class="sponsor-card">TechCorp</div>
+          <div class="sponsor-card">Cloudify</div>
+          <div class="sponsor-card">DataSense</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="container">
+        <h2>Contact & Venue</h2>
+        <div class="contact-grid">
+          <div>
+            <p>Venue: Metropolitan Conference Center, New York</p>
+            <p>Email: info@confpro2025.com</p>
+          </div>
+          <form class="contact-form" id="register">
+            <h3>Register Interest</h3>
+            <label>
+              Full name
+              <input type="text" name="name" required>
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" required>
+            </label>
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 ConfPro. Built with care.</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
