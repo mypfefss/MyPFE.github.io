@@ -1,0 +1,24 @@
+{
+  "schedule": [
+    {
+      "time": "09:00-10:00",
+      "title": "Opening Ceremony",
+      "description": "Welcome address and event overview"
+    },
+    {
+      "time": "10:15-11:45",
+      "title": "Technical Workshops",
+      "description": "Hands-on sessions on latest technologies"
+    },
+    {
+      "time": "13:45-15:15",
+      "title": "Company Booths",
+      "description": "Explore opportunities and network"
+    },
+    {
+      "time": "15:45-16:30",
+      "title": "Partner Workshops",
+      "description": "Special sessions by industry partners"
+    }
+  ]
+}

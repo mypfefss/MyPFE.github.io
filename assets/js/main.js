@@ -368,3 +368,388 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Initialize back to top button
 document.addEventListener('DOMContentLoaded', createBackToTopButton);
+
+// Load schedule from JSON
+async function loadSchedule() {
+    try {
+        // Try different possible paths depending on where the page is located
+        const possiblePaths = ['./data/schedule.json', '../data/schedule.json', '/data/schedule.json'];
+        let data = null;
+        
+        for (const path of possiblePaths) {
+            try {
+                const response = await fetch(path);
+                if (response.ok) {
+                    data = await response.json();
+                    break;
+                }
+            } catch (err) {
+                // Continue to next path
+                continue;
+            }
+        }
+        
+        if (data && data.schedule) {
+            displaySchedule(data.schedule);
+        } else {
+            console.warn('No schedule data found, using fallback');
+            displayFallbackSchedule();
+        }
+    } catch (error) {
+        console.error('Error loading schedule:', error);
+        displayFallbackSchedule();
+    }
+}
+
+function displaySchedule(scheduleItems) {
+    const container = document.querySelector('.schedule-list');
+    if (!container) {
+        console.warn('Schedule container (.schedule-list) not found');
+        return;
+    }
+    
+    const html = scheduleItems.map(item => `
+        <div class="schedule-item">
+            <div class="schedule-time">
+                <span class="time">${item.time}</span>
+            </div>
+            <div class="schedule-content">
+                <h3>${item.title}</h3>
+                <p>${item.description}</p>
+                ${item.details ? `
+                    <div class="schedule-details">
+                        ${item.details.map(detail => `
+                            <span class="detail-item">
+                                <i class="fas ${detail.icon || 'fa-info-circle'}"></i> 
+                                ${detail.text}
+                            </span>
+                        `).join('')}
+                    </div>
+                ` : ''}
+                ${item.speakers ? `
+                    <div class="speakers">
+                        <h4>Speakers:</h4>
+                        <ul>
+                            ${item.speakers.map(speaker => `<li>${speaker}</li>`).join('')}
+                        </ul>
+                    </div>
+                ` : ''}
+            </div>
+        </div>
+    `).join('');
+    
+    container.innerHTML = html;
+    console.log('Schedule loaded successfully');
+}
+
+function displayFallbackSchedule() {
+    const container = document.querySelector('.schedule-list');
+    if (!container) return;
+    
+    container.innerHTML = `
+        <div class="schedule-item">
+            <div class="schedule-time">
+                <span class="time">09:00</span>
+            </div>
+            <div class="schedule-content">
+                <h3>Opening Ceremony</h3>
+                <p>Welcome address and event overview</p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <div class="schedule-time">
+                <span class="time">10:15</span>
+            </div>
+            <div class="schedule-content">
+                <h3>Technical Workshops</h3>
+                <p>Hands-on sessions on latest technologies</p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <div class="schedule-time">
+                <span class="time">13:45</span>
+            </div>
+            <div class="schedule-content">
+                <h3>Company Booths</h3>
+                <p>Explore opportunities and network</p>
+            </div>
+        </div>
+        <div class="schedule-item">
+            <div class="schedule-time">
+                <span class="time">15:45</span>
+            </div>
+            <div class="schedule-content">
+                <h3>Partner Workshops</h3>
+                <p>Special sessions by industry partners</p>
+            </div>
+        </div>
+    `;
+    console.log('Fallback schedule loaded');
+}
+
+// Load schedule when page loads
+document.addEventListener('DOMContentLoaded', loadSchedule);
+document.addEventListener('DOMContentLoaded', loadSchedule);
+// Load former partners from JSON
+async function loadFormerPartners() {
+    try {
+        console.log('Loading former partners...');
+        
+        // Try different possible paths depending on where the page is located
+        const possiblePaths = ['./data/partners.json', '../data/partners.json', '/data/partners.json'];
+        let data = null;
+        
+        for (const path of possiblePaths) {
+            try {
+                const response = await fetch(path);
+                if (response.ok) {
+                    data = await response.json();
+                    console.log('Partners data loaded from:', path, data);
+                    break;
+                }
+            } catch (err) {
+                console.log('Failed to load from path:', path);
+                continue;
+            }
+        }
+        
+        if (data && data.formerPartners && Array.isArray(data.formerPartners)) {
+            displayFormerPartners(data.formerPartners);
+        } else {
+            console.warn('No partners data found, using fallback');
+            displayPartnersFallback();
+        }
+    } catch (error) {
+        console.error('Error loading former partners:', error);
+        displayPartnersFallback();
+    }
+}
+
+function displayFormerPartners(partners) {
+    const container = document.querySelector('.partners-grid');
+    if (!container) {
+        console.warn('Partners grid container not found');
+        return;
+    }
+    
+    const html = partners.map(partner => `
+        <div class="partner-logo" data-category="${partner.category}" data-year="${partner.year}">
+            <img src="${partner.logo}" alt="${partner.name}" title="${partner.name} - ${partner.category}">
+            <div class="partner-info">
+                <h4>${partner.name}</h4>
+                <p>${partner.category}</p>
+                <span class="partner-year">${partner.year}</span>
+            </div>
+        </div>
+    `).join('');
+    
+    container.innerHTML = html;
+    
+    // Add hover effects
+    addPartnerHoverEffects();
+}
+
+function addPartnerHoverEffects() {
+    const partnerLogos = document.querySelectorAll('.partner-logo');
+    
+    partnerLogos.forEach(logo => {
+        logo.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+            this.style.transition = 'transform 0.3s ease';
+        });
+        
+        logo.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
+}
+
+function displayPartnersFallback() {
+    const container = document.querySelector('.partners-grid');
+    if (!container) return;
+    
+    container.innerHTML = `
+        <div class="partner-logo">
+            <div class="partner-placeholder">
+                <i class="fas fa-building"></i>
+                <p>Partner logos will be displayed here</p>
+            </div>
+        </div>
+    `;
+}
+
+
+
+// Load partners when page loads (only on sponsors page)
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if we're on the sponsors/partners page
+    if (window.location.pathname.includes('sponsors.html') || 
+        document.querySelector('.former-partners')) {
+        loadFormerPartners();
+    }
+});
+
+function displayFormerPartners(partners) {
+    const container = document.querySelector('.partners-grid');
+    if (!container) {
+        console.warn('Partners grid container not found');
+        return;
+    }
+    
+    const html = partners.map(partner => `
+        <div class="partner-logo" data-category="${partner.category}" data-year="${partner.year}">
+            <img src="${partner.logo}" alt="${partner.name}" title="${partner.name} - ${partner.category}">
+            <div class="partner-info">
+                <h4>${partner.name}</h4>
+                <p>${partner.category}</p>
+                <span class="partner-year">${partner.year}</span>
+            </div>
+        </div>
+    `).join('');
+    
+    container.innerHTML = html;
+    
+    // Add hover effects
+    addPartnerHoverEffects();
+}
+
+function addPartnerHoverEffects() {
+    const partnerLogos = document.querySelectorAll('.partner-logo');
+    
+    partnerLogos.forEach(logo => {
+        logo.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+            this.style.transition = 'transform 0.3s ease';
+        });
+        
+        logo.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
+}
+
+function displayPartnersFallback() {
+    const container = document.querySelector('.partners-grid');
+    if (!container) return;
+    
+    container.innerHTML = `
+        <div class="partner-logo">
+            <div class="partner-placeholder">
+                <i class="fas fa-building"></i>
+                <p>Partner logos will be displayed here</p>
+            </div>
+        </div>
+    `;
+}
+
+// Load partners when page loads (only on sponsors page)
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if we're on the sponsors/partners page
+    if (window.location.pathname.includes('sponsors.html') || 
+        document.querySelector('.former-partners')) {
+        loadFormerPartners();
+    }
+    
+    // Check if we're on the program page
+    if (window.location.pathname.includes('program.html') || 
+        document.querySelector('.workshops-grid')) {
+        loadWorkshops();
+    }
+});
+
+// Load workshops from JSON
+async function loadWorkshops() {
+    try {
+        console.log('Loading workshops...');
+        
+        // Try different possible paths depending on where the page is located
+        const possiblePaths = ['./data/workshops.json', '../data/workshops.json', '/data/workshops.json'];
+        let data = null;
+        
+        for (const path of possiblePaths) {
+            try {
+                const response = await fetch(path);
+                if (response.ok) {
+                    data = await response.json();
+                    console.log('Workshops data loaded from:', path, data);
+                    break;
+                }
+            } catch (err) {
+                console.log('Failed to load from path:', path);
+                continue;
+            }
+        }
+        
+        if (data && data.workshops && Array.isArray(data.workshops)) {
+            displayWorkshops(data.workshops);
+        } else {
+            console.warn('No workshops data found, using fallback');
+            displayWorkshopsFallback();
+        }
+    } catch (error) {
+        console.error('Error loading workshops:', error);
+        displayWorkshopsFallback();
+    }
+}
+
+function displayWorkshops(workshops) {
+    const container = document.querySelector('.workshops-grid');
+    if (!container) {
+        console.warn('Workshops grid container not found');
+        return;
+    }
+    
+    const html = workshops.map(workshop => `
+        <div class="workshop-card">
+            <div class="workshop-icon">
+                <i class="${workshop.icon}"></i>
+            </div>
+            <h3>${workshop.title}</h3>
+            <p class="workshop-time">${workshop.time}</p>
+            <p>${workshop.description}</p>
+            <div class="workshop-info">
+                ${workshop.features.map(feature => `
+                    <span><i class="${feature.icon}"></i> ${feature.text}</span>
+                `).join('')}
+            </div>
+        </div>
+    `).join('');
+    
+    container.innerHTML = html;
+    console.log('Workshops loaded successfully');
+}
+
+function displayWorkshopsFallback() {
+    const container = document.querySelector('.workshops-grid');
+    if (!container) return;
+    
+    container.innerHTML = `
+        <div class="workshop-card">
+            <div class="workshop-icon">
+                <i class="fas fa-brain"></i>
+            </div>
+            <h3>AI & Machine Learning</h3>
+            <p class="workshop-time">10:15 - 11:45 AM</p>
+            <p>Explore the fundamentals of artificial intelligence and machine learning.</p>
+            <div class="workshop-info">
+                <span><i class="fas fa-user"></i> Expert Instructors</span>
+                <span><i class="fas fa-laptop"></i> Hands-on Coding</span>
+                <span><i class="fas fa-certificate"></i> Certificates</span>
+            </div>
+        </div>
+        <div class="workshop-card">
+            <div class="workshop-icon">
+                <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3>Mobile Development</h3>
+            <p class="workshop-time">10:15 - 11:45 AM</p>
+            <p>Learn modern mobile app development using React Native and Flutter.</p>
+            <div class="workshop-info">
+                <span><i class="fas fa-code"></i> Live Coding</span>
+                <span><i class="fas fa-mobile"></i> Cross-platform</span>
+                <span><i class="fas fa-rocket"></i> Deploy Apps</span>
+            </div>
+        </div>
+    `;
+    console.log('Fallback workshops loaded');
+}

@@ -1,0 +1,76 @@
+{
+  "workshops": [
+    {
+      "id": 1,
+      "title": "AI & Machine Learning",
+      "time": "10:15 - 11:45 AM",
+      "description": "Explore the fundamentals of artificial intelligence and machine learning with hands-on examples and real-world applications.",
+      "icon": "fas fa-brain",
+      "features": [
+        { "icon": "fas fa-user", "text": "Expert Instructors" },
+        { "icon": "fas fa-laptop", "text": "Hands-on Coding" },
+        { "icon": "fas fa-certificate", "text": "Certificates" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Mobile Development",
+      "time": "10:15 - 11:45 AM",
+      "description": "Learn modern mobile app development using React Native and Flutter, from basics to deployment.",
+      "icon": "fas fa-mobile-alt",
+      "features": [
+        { "icon": "fas fa-code", "text": "Live Coding" },
+        { "icon": "fas fa-mobile", "text": "Cross-platform" },
+        { "icon": "fas fa-rocket", "text": "Deploy Apps" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Cloud Computing",
+      "time": "10:15 - 11:45 AM",
+      "description": "Discover cloud platforms, containerization with Docker, and scalable application deployment.",
+      "icon": "fas fa-cloud",
+      "features": [
+        { "icon": "fas fa-server", "text": "AWS/Azure" },
+        { "icon": "fas fa-docker", "text": "Docker" },
+        { "icon": "fas fa-expand-arrows-alt", "text": "Scalability" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Cybersecurity",
+      "time": "10:15 - 11:45 AM",
+      "description": "Learn ethical hacking techniques, security assessment tools, and best practices for secure development.",
+      "icon": "fas fa-shield-alt",
+      "features": [
+        { "icon": "fas fa-bug", "text": "Penetration Testing" },
+        { "icon": "fas fa-lock", "text": "Security Tools" },
+        { "icon": "fas fa-shield", "text": "Defense" }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Data Science",
+      "time": "15:45 - 16:30 PM",
+      "description": "Analyze big data, create visualizations, and build predictive models using Python and R.",
+      "icon": "fas fa-chart-line",
+      "features": [
+        { "icon": "fas fa-python", "text": "Python/R" },
+        { "icon": "fas fa-chart-bar", "text": "Visualization" },
+        { "icon": "fas fa-database", "text": "Big Data" }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Professional Skills",
+      "time": "15:45 - 16:30 PM",
+      "description": "Enhance your resume, prepare for interviews, and develop essential soft skills for career success.",
+      "icon": "fas fa-user-tie",
+      "features": [
+        { "icon": "fas fa-file-alt", "text": "Resume Tips" },
+        { "icon": "fas fa-comments", "text": "Interview Prep" },
+        { "icon": "fas fa-handshake", "text": "Networking" }
+      ]
+    }
+  ]
+}
