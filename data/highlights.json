@@ -1,0 +1,39 @@
+{
+  "highlights": [
+    {
+      "id": 1,
+      "time": "9:00 - 9:45",
+      "title": "Opening Ceremony",
+      "description": "Welcome address and event overview",
+      "category": "ceremony"
+    },
+    {
+      "id": 2,
+      "time": "10:15 - 11:45",
+      "title": "Technical Workshops",
+      "description": "Hands-on sessions on latest technologies",
+      "category": "workshop"
+    },
+    {
+      "id": 3,
+      "time": "13:45 - 15:15",
+      "title": "Company Booths",
+      "description": "Explore opportunities and network",
+      "category": "networking"
+    },
+    {
+      "id": 4,
+      "time": "15:45 - 16:30",
+      "title": "Partner Workshops",
+      "description": "Special sessions by industry partners",
+      "category": "workshop"
+    },
+    {
+      "id": 5,
+      "time": "16:45 - 17:30",
+      "title": "Closing Ceremony",
+      "description": "Awards and closing remarks",
+      "category": "ceremony"
+    }
+  ]
+}

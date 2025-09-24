@@ -45,11 +45,12 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Animate Elements on Scroll
+// Animate Elements on Scroll - Enhanced version
 function animateOnScroll() {
-    const elements = document.querySelectorAll('.stat-item, .feature, .program-item, .organizer, .workshop-card, .schedule-item');
+    // Original selectors for backward compatibility (removed .stat-item)
+    const legacyElements = document.querySelectorAll('.feature, .program-item, .organizer, .workshop-card, .schedule-item, .benefit-card, .info-card, .contact-card, .registration-card, .partner-logo');
     
-    elements.forEach(element => {
+    legacyElements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
         const elementVisible = 150;
         
@@ -58,16 +59,56 @@ function animateOnScroll() {
             element.style.transform = 'translateY(0)';
         }
     });
+
+    // New scroll reveal system
+    const scrollRevealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale, .text-reveal');
+    
+    scrollRevealElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementBottom = element.getBoundingClientRect().bottom;
+        const elementVisible = 100;
+        
+        if (elementTop < window.innerHeight - elementVisible && elementBottom > 0) {
+            element.classList.add('revealed');
+        }
+    });
+
+    // Parallax effect for background elements
+    const parallaxElements = document.querySelectorAll('.parallax-bg');
+    const scrolled = window.pageYOffset;
+    
+    parallaxElements.forEach(element => {
+        const rate = scrolled * -0.5;
+        element.style.transform = `translateY(${rate}px)`;
+    });
 }
 
-// Initialize animation styles
+// Initialize animation styles - Enhanced version
 document.addEventListener('DOMContentLoaded', function() {
-    const elements = document.querySelectorAll('.stat-item, .feature, .program-item, .organizer, .workshop-card, .schedule-item');
-    elements.forEach(element => {
+    // Original legacy elements (removed .stat-item)
+    const legacyElements = document.querySelectorAll('.feature, .program-item, .organizer, .workshop-card, .schedule-item, .benefit-card, .info-card, .contact-card, .registration-card, .partner-logo');
+    legacyElements.forEach(element => {
         element.style.opacity = '0';
         element.style.transform = 'translateY(20px)';
         element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     });
+
+    // Initialize scroll reveal elements
+    const scrollRevealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale, .text-reveal');
+    scrollRevealElements.forEach((element, index) => {
+        // Add stagger delay for elements in the same container
+        const container = element.closest('section, .container');
+        if (container) {
+            const elementsInContainer = container.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale, .text-reveal');
+            const elementIndex = Array.from(elementsInContainer).indexOf(element);
+            if (elementIndex < 6) {
+                element.classList.add(`delay-${elementIndex + 1}`);
+            }
+        }
+    });
+
+    // Trigger initial animation check
+    animateOnScroll();
 });
 
 window.addEventListener('scroll', animateOnScroll);
@@ -237,43 +278,7 @@ document.addEventListener('DOMContentLoaded', function() {
     partnershipForms.forEach(handlePartnershipForm);
 });
 
-// Counter Animation for Stats
-function animateCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    
-    counters.forEach(counter => {
-        const target = parseInt(counter.textContent.replace(/\D/g, ''));
-        if (target === 0) return;
-        
-        const increment = target / 100;
-        let current = 0;
-        
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                current = target;
-                clearInterval(timer);
-            }
-            
-            const suffix = counter.textContent.includes('+') ? '+' : '';
-            const prefix = counter.textContent.match(/^\D*/)[0];
-            counter.textContent = prefix + Math.floor(current) + suffix;
-        }, 20);
-    });
-}
-
-// Trigger counter animation when stats section is visible
-let countersAnimated = false;
-window.addEventListener('scroll', function() {
-    const statsSection = document.querySelector('.stats');
-    if (statsSection && !countersAnimated) {
-        const rect = statsSection.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-            animateCounters();
-            countersAnimated = true;
-        }
-    }
-});
+// REMOVED OLD COUNTER SYSTEM - using new StatsCounter class instead
 
 // Preloader (optional)
 window.addEventListener('load', function() {
@@ -408,8 +413,8 @@ function displaySchedule(scheduleItems) {
         return;
     }
     
-    const html = scheduleItems.map(item => `
-        <div class="schedule-item">
+    const html = scheduleItems.map((item, index) => `
+        <div class="schedule-item scroll-reveal delay-${Math.min(index + 1, 6)}">
             <div class="schedule-time">
                 <span class="time">${item.time}</span>
             </div>
@@ -439,6 +444,12 @@ function displaySchedule(scheduleItems) {
     `).join('');
     
     container.innerHTML = html;
+    
+    // Re-initialize scroll animations for the newly loaded content
+    setTimeout(() => {
+        animateOnScroll();
+    }, 100);
+    
     console.log('Schedule loaded successfully');
 }
 
@@ -447,7 +458,7 @@ function displayFallbackSchedule() {
     if (!container) return;
     
     container.innerHTML = `
-        <div class="schedule-item">
+        <div class="schedule-item scroll-reveal delay-1">
             <div class="schedule-time">
                 <span class="time">09:00</span>
             </div>
@@ -456,7 +467,7 @@ function displayFallbackSchedule() {
                 <p>Welcome address and event overview</p>
             </div>
         </div>
-        <div class="schedule-item">
+        <div class="schedule-item scroll-reveal delay-2">
             <div class="schedule-time">
                 <span class="time">10:15</span>
             </div>
@@ -465,7 +476,7 @@ function displayFallbackSchedule() {
                 <p>Hands-on sessions on latest technologies</p>
             </div>
         </div>
-        <div class="schedule-item">
+        <div class="schedule-item scroll-reveal delay-3">
             <div class="schedule-time">
                 <span class="time">13:45</span>
             </div>
@@ -474,7 +485,7 @@ function displayFallbackSchedule() {
                 <p>Explore opportunities and network</p>
             </div>
         </div>
-        <div class="schedule-item">
+        <div class="schedule-item scroll-reveal delay-4">
             <div class="schedule-time">
                 <span class="time">15:45</span>
             </div>
@@ -484,6 +495,12 @@ function displayFallbackSchedule() {
             </div>
         </div>
     `;
+    
+    // Re-initialize scroll animations for the newly loaded content
+    setTimeout(() => {
+        animateOnScroll();
+    }, 100);
+    
     console.log('Fallback schedule loaded');
 }
 
@@ -525,30 +542,6 @@ async function loadFormerPartners() {
     }
 }
 
-function displayFormerPartners(partners) {
-    const container = document.querySelector('.partners-grid');
-    if (!container) {
-        console.warn('Partners grid container not found');
-        return;
-    }
-    
-    const html = partners.map(partner => `
-        <div class="partner-logo" data-category="${partner.category}" data-year="${partner.year}">
-            <img src="${partner.logo}" alt="${partner.name}" title="${partner.name} - ${partner.category}">
-            <div class="partner-info">
-                <h4>${partner.name}</h4>
-                <p>${partner.category}</p>
-                <span class="partner-year">${partner.year}</span>
-            </div>
-        </div>
-    `).join('');
-    
-    container.innerHTML = html;
-    
-    // Add hover effects
-    addPartnerHoverEffects();
-}
-
 function addPartnerHoverEffects() {
     const partnerLogos = document.querySelectorAll('.partner-logo');
     
@@ -563,21 +556,6 @@ function addPartnerHoverEffects() {
         });
     });
 }
-
-function displayPartnersFallback() {
-    const container = document.querySelector('.partners-grid');
-    if (!container) return;
-    
-    container.innerHTML = `
-        <div class="partner-logo">
-            <div class="partner-placeholder">
-                <i class="fas fa-building"></i>
-                <p>Partner logos will be displayed here</p>
-            </div>
-        </div>
-    `;
-}
-
 
 
 // Load partners when page loads (only on sponsors page)
@@ -596,8 +574,8 @@ function displayFormerPartners(partners) {
         return;
     }
     
-    const html = partners.map(partner => `
-        <div class="partner-logo" data-category="${partner.category}" data-year="${partner.year}">
+    const html = partners.map((partner, index) => `
+        <div class="partner-logo scroll-reveal delay-${Math.min(index + 1, 6)}" data-category="${partner.category}" data-year="${partner.year}">
             <img src="${partner.logo}" alt="${partner.name}" title="${partner.name} - ${partner.category}">
             <div class="partner-info">
                 <h4>${partner.name}</h4>
@@ -611,6 +589,11 @@ function displayFormerPartners(partners) {
     
     // Add hover effects
     addPartnerHoverEffects();
+    
+    // Re-initialize scroll animations for the newly loaded content
+    setTimeout(() => {
+        animateOnScroll();
+    }, 100);
 }
 
 function addPartnerHoverEffects() {
@@ -633,13 +616,24 @@ function displayPartnersFallback() {
     if (!container) return;
     
     container.innerHTML = `
-        <div class="partner-logo">
+        <div class="partner-logo scroll-reveal delay-1">
             <div class="partner-placeholder">
                 <i class="fas fa-building"></i>
                 <p>Partner logos will be displayed here</p>
             </div>
         </div>
+        <div class="partner-logo scroll-reveal delay-2">
+            <div class="partner-placeholder">
+                <i class="fas fa-handshake"></i>
+                <p>Become a partner today</p>
+            </div>
+        </div>
     `;
+    
+    // Re-initialize scroll animations for the newly loaded content
+    setTimeout(() => {
+        animateOnScroll();
+    }, 100);
 }
 
 // Load partners when page loads (only on sponsors page)
@@ -699,8 +693,8 @@ function displayWorkshops(workshops) {
         return;
     }
     
-    const html = workshops.map(workshop => `
-        <div class="workshop-card">
+    const html = workshops.map((workshop, index) => `
+        <div class="workshop-card scroll-reveal delay-${Math.min(index + 1, 6)}">
             <div class="workshop-icon">
                 <i class="${workshop.icon}"></i>
             </div>
@@ -716,6 +710,12 @@ function displayWorkshops(workshops) {
     `).join('');
     
     container.innerHTML = html;
+    
+    // Re-initialize scroll animations for the newly loaded content
+    setTimeout(() => {
+        animateOnScroll();
+    }, 100);
+    
     console.log('Workshops loaded successfully');
 }
 
@@ -724,7 +724,7 @@ function displayWorkshopsFallback() {
     if (!container) return;
     
     container.innerHTML = `
-        <div class="workshop-card">
+        <div class="workshop-card scroll-reveal delay-1">
             <div class="workshop-icon">
                 <i class="fas fa-brain"></i>
             </div>
@@ -737,7 +737,7 @@ function displayWorkshopsFallback() {
                 <span><i class="fas fa-certificate"></i> Certificates</span>
             </div>
         </div>
-        <div class="workshop-card">
+        <div class="workshop-card scroll-reveal delay-2">
             <div class="workshop-icon">
                 <i class="fas fa-mobile-alt"></i>
             </div>
@@ -751,5 +751,338 @@ function displayWorkshopsFallback() {
             </div>
         </div>
     `;
+    
+    // Re-initialize scroll animations for the newly loaded content
+    setTimeout(() => {
+        animateOnScroll();
+    }, 100);
+    
     console.log('Fallback workshops loaded');
 }
+
+// New Stats Counter System with Enhanced Protection
+class StatsCounter {
+    constructor() {
+        this.hasAnimated = false;
+        this.isAnimating = false;
+        this.animationFrames = [];
+        this.statElements = [];
+        this.counterWorkedOnce = false; // New boolean flag for first-time protection
+        this.init();
+    }
+
+    init() {
+        // Check if counter has already worked once
+        if (this.counterWorkedOnce) {
+            console.log('Stats counter already executed once, skipping...');
+            return;
+        }
+
+        // Wait for DOM to be ready, then start animation immediately
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.startAnimation());
+        } else {
+            this.startAnimation();
+        }
+    }
+
+    startAnimation() {
+        // Triple protection: check all conditions
+        if (this.counterWorkedOnce || this.hasAnimated || this.isAnimating) {
+            console.log('Stats counter blocked by protection flags');
+            return;
+        }
+
+        const statsSection = document.querySelector('.stats');
+        if (!statsSection) return;
+
+        // Set the first-time flag immediately
+        this.counterWorkedOnce = true;
+
+        // Store stat elements for protection
+        this.statElements = Array.from(document.querySelectorAll('.stat-item'));
+        
+        // Mark each stat element to prevent other systems from interfering
+        this.statElements.forEach(element => {
+            element.setAttribute('data-stats-controlled', 'true');
+            element.setAttribute('data-counter-executed', 'true'); // Additional marker
+            // Ensure they're visible and positioned correctly
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+        });
+
+        // Start animation immediately when page loads
+        this.animateStats();
+    }
+
+    animateStats() {
+        // Check all protection flags
+        if (this.counterWorkedOnce && this.hasAnimated) {
+            console.log('Animation blocked: already completed');
+            return;
+        }
+        
+        if (this.hasAnimated || this.isAnimating) return;
+        
+        this.hasAnimated = true;
+        this.isAnimating = true;
+        
+        console.log('Starting stats animation for the first and only time');
+        
+        const statItems = document.querySelectorAll('.stat-item');
+        
+        // Define the stats data
+        const statsData = [
+            { target: 350, suffix: '+', duration: 2000 },
+            { target: 20, suffix: '+', duration: 1500 },
+            { target: 5, suffix: '+', duration: 1000 },
+            { target: 14, suffix: 'th', duration: 1200 }
+        ];
+
+        let completedAnimations = 0;
+        const totalAnimations = statItems.length;
+
+        statItems.forEach((item, index) => {
+            const numberElement = item.querySelector('.stat-number');
+            const data = statsData[index];
+            
+            if (!numberElement || !data) return;
+
+            // Start animation with slight delay for staggered effect
+            setTimeout(() => {
+                this.animateNumber(numberElement, data.target, data.suffix, data.duration, () => {
+                    completedAnimations++;
+                    if (completedAnimations === totalAnimations) {
+                        this.isAnimating = false;
+                        // Lock the final values to prevent any changes
+                        this.lockFinalValues();
+                        console.log('Stats counter animation completed and permanently locked');
+                    }
+                });
+            }, index * 200);
+        });
+    }
+
+    animateNumber(element, target, suffix, duration, onComplete) {
+        const startTime = Date.now();
+        const startValue = 0;
+        let animationId;
+        
+        const animate = () => {
+            const elapsed = Date.now() - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Use easing function for smooth animation
+            const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+            const currentValue = Math.floor(startValue + (target - startValue) * easeOutCubic);
+            
+            // Update display
+            if (progress < 1 && this.isAnimating) {
+                element.textContent = currentValue;
+                animationId = requestAnimationFrame(animate);
+                this.animationFrames.push(animationId);
+            } else {
+                // Animation complete - show final value with suffix
+                element.textContent = target + suffix;
+                element.setAttribute('data-final-value', target + suffix);
+                // Remove this frame from tracking
+                const frameIndex = this.animationFrames.indexOf(animationId);
+                if (frameIndex > -1) {
+                    this.animationFrames.splice(frameIndex, 1);
+                }
+                if (onComplete) onComplete();
+            }
+        };
+        
+        animationId = requestAnimationFrame(animate);
+        this.animationFrames.push(animationId);
+    }
+
+    lockFinalValues() {
+        // Ensure final values are locked and can't be changed
+        this.statElements.forEach(element => {
+            const numberElement = element.querySelector('.stat-number');
+            if (numberElement) {
+                const finalValue = numberElement.getAttribute('data-final-value');
+                if (finalValue) {
+                    // Create a locked text node
+                    const lockedText = document.createTextNode(finalValue);
+                    numberElement.innerHTML = '';
+                    numberElement.appendChild(lockedText);
+                    
+                    // Prevent any style changes
+                    numberElement.style.pointerEvents = 'none';
+                    element.style.pointerEvents = 'none';
+                }
+            }
+        });
+    }
+
+    // Method to cancel all ongoing animations if needed
+    cancelAnimations() {
+        this.animationFrames.forEach(frameId => {
+            cancelAnimationFrame(frameId);
+        });
+        this.animationFrames = [];
+        this.isAnimating = false;
+    }
+}
+
+// Initialize the stats counter
+const statsCounter = new StatsCounter();
+
+// Additional protection: Override any attempts to modify stat numbers
+document.addEventListener('DOMContentLoaded', function() {
+    // Wait a bit for the stats counter to initialize
+    setTimeout(() => {
+        const statItems = document.querySelectorAll('.stat-item[data-stats-controlled="true"]');
+        
+        // Create a MutationObserver to protect against external changes
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'childList' || mutation.type === 'characterData') {
+                    const target = mutation.target;
+                    if (target.classList && target.classList.contains('stat-number')) {
+                        const finalValue = target.getAttribute('data-final-value');
+                        if (finalValue && target.textContent !== finalValue) {
+                            // Restore the correct value if it was changed
+                            target.textContent = finalValue;
+                        }
+                    }
+                }
+            });
+        });
+        
+        // Observe each stat item for changes
+        statItems.forEach(item => {
+            observer.observe(item, {
+                childList: true,
+                subtree: true,
+                characterData: true
+            });
+        });
+    }, 3000); // Wait 3 seconds for animation to complete
+});
+
+// Load Event Highlights from JSON
+async function loadHighlights() {
+    try {
+        console.log('Loading event highlights...');
+        
+        // Try different possible paths depending on where the page is located
+        const possiblePaths = ['./data/highlights.json', '../data/highlights.json', '/data/highlights.json'];
+        let data = null;
+        
+        for (const path of possiblePaths) {
+            try {
+                const response = await fetch(path);
+                if (response.ok) {
+                    data = await response.json();
+                    console.log('Highlights data loaded from:', path, data);
+                    break;
+                }
+            } catch (err) {
+                console.log('Failed to load highlights from path:', path);
+                continue;
+            }
+        }
+        
+        if (data && data.highlights && Array.isArray(data.highlights)) {
+            displayHighlights(data.highlights);
+        } else {
+            console.warn('No highlights data found, using fallback');
+            displayHighlightsFallback();
+        }
+    } catch (error) {
+        console.error('Error loading event highlights:', error);
+        displayHighlightsFallback();
+    }
+}
+
+function displayHighlights(highlights) {
+    const container = document.querySelector('.program-grid');
+    if (!container) {
+        console.warn('Program grid container (.program-grid) not found');
+        return;
+    }
+    
+    const html = highlights.map((highlight, index) => `
+        <div class="program-item scroll-reveal delay-${Math.min(index + 1, 6)}">
+            <div class="program-icon">
+                <i class="${highlight.icon}"></i>
+            </div>
+            <div class="time">${highlight.time}</div>
+            <h4>${highlight.title}</h4>
+            <p>${highlight.description}</p>
+            <span class="program-category">${highlight.category}</span>
+        </div>
+    `).join('');
+    
+    container.innerHTML = html;
+    
+    // Re-initialize scroll animations for the newly loaded content
+    setTimeout(() => {
+        animateOnScroll();
+    }, 100);
+    
+    console.log(`${highlights.length} event highlights loaded successfully`);
+}
+
+function displayHighlightsFallback() {
+    const container = document.querySelector('.program-grid');
+    if (!container) return;
+    
+    container.innerHTML = `
+        <div class="program-item scroll-reveal delay-1">
+            <div class="program-icon">
+                <i class="fas fa-flag"></i>
+            </div>
+            <div class="time">9:00 - 9:45</div>
+            <h4>Opening Ceremony</h4>
+            <p>Welcome address and event overview</p>
+        </div>
+        <div class="program-item scroll-reveal delay-2">
+            <div class="program-icon">
+                <i class="fas fa-laptop-code"></i>
+            </div>
+            <div class="time">10:15 - 11:45</div>
+            <h4>Technical Workshops</h4>
+            <p>Hands-on sessions on latest technologies</p>
+        </div>
+        <div class="program-item scroll-reveal delay-3">
+            <div class="program-icon">
+                <i class="fas fa-building"></i>
+            </div>
+            <div class="time">13:45 - 15:15</div>
+            <h4>Company Booths</h4>
+            <p>Explore opportunities and network</p>
+        </div>
+        <div class="program-item scroll-reveal delay-4">
+            <div class="program-icon">
+                <i class="fas fa-handshake"></i>
+            </div>
+            <div class="time">15:45 - 16:30</div>
+            <h4>Partner Workshops</h4>
+            <p>Special sessions by industry partners</p>
+        </div>
+    `;
+    
+    // Re-initialize scroll animations for the newly loaded content
+    setTimeout(() => {
+        animateOnScroll();
+    }, 100);
+    
+    console.log('Fallback event highlights loaded');
+}
+
+// Load highlights when page loads (only on index page or pages with program-highlights section)
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if we're on a page that should display highlights
+    const highlightsSection = document.querySelector('.program-highlights');
+    const isIndexPage = window.location.pathname === '/' || window.location.pathname.includes('index.html') || window.location.pathname === '/index.html';
+    
+    if (highlightsSection || isIndexPage) {
+        console.log('Loading highlights on page:', window.location.pathname);
+        loadHighlights();
+    }
+});

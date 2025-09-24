@@ -2478,8 +2478,9 @@ h4 { font-size: 1.5rem; }
         width: 100px;
         height: 60px;
     }
-}/* An
-imation for partner filtering */
+}
+
+/* Animation for partner filtering */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -2489,4 +2490,101 @@ imation for partner filtering */
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Scroll Animations */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-reveal-left.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scroll-reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-reveal-right.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scroll-reveal-scale {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-reveal-scale.revealed {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Stagger animations for groups */
+.scroll-reveal.delay-1 { transition-delay: 0.1s; }
+.scroll-reveal.delay-2 { transition-delay: 0.2s; }
+.scroll-reveal.delay-3 { transition-delay: 0.3s; }
+.scroll-reveal.delay-4 { transition-delay: 0.4s; }
+.scroll-reveal.delay-5 { transition-delay: 0.5s; }
+.scroll-reveal.delay-6 { transition-delay: 0.6s; }
+
+/* Enhanced animations for specific elements */
+.hero-content .scroll-reveal {
+    transform: translateY(30px);
+    transition-duration: 1s;
+}
+
+.feature-card.scroll-reveal {
+    transform: translateY(30px) scale(0.95);
+    transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.feature-card.scroll-reveal.revealed {
+    transform: translateY(0) scale(1);
+}
+
+.stat-card.scroll-reveal {
+    transform: translateY(40px);
+    transition: all 0.6s ease-out;
+}
+
+.workshop-card.scroll-reveal,
+.schedule-item.scroll-reveal,
+.organizer.scroll-reveal {
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+/* Parallax effect for background elements */
+.parallax-bg {
+    transition: transform 0.1s ease-out;
+}
+
+/* Smooth reveal for text content */
+.text-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.text-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
 }
