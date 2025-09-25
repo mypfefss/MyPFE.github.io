@@ -414,13 +414,36 @@ function displaySchedule(scheduleItems) {
     }
     
     const html = scheduleItems.map((item, index) => `
-        <div class="schedule-item scroll-reveal delay-${Math.min(index + 1, 6)}">
+        <div class="schedule-item ${item.featured ? 'featured' : ''} scroll-reveal delay-${Math.min(index + 1, 6)}">
             <div class="schedule-time">
                 <span class="time">${item.time}</span>
+                ${item.location ? `<span class="duration">${item.location}</span>` : ''}
             </div>
             <div class="schedule-content">
                 <h3>${item.title}</h3>
                 <p>${item.description}</p>
+                
+                ${item.speaker ? `
+                    <div class="speaker-info">
+                        <div class="speaker-details">
+                            <i class="fas fa-user-tie"></i>
+                            <div class="speaker-text">
+                                <strong>${item.speaker.name}</strong>
+                                <span>${item.speaker.title}</span>
+                                <small>${item.speaker.company}</small>
+                            </div>
+                        </div>
+                    </div>
+                ` : ''}
+                
+                ${item.tags && item.tags.length > 0 ? `
+                    <div class="schedule-tags">
+                        ${item.tags.map(tag => `
+                            <span class="schedule-tag tag-${tag}">${tag}</span>
+                        `).join('')}
+                    </div>
+                ` : ''}
+                
                 ${item.details ? `
                     <div class="schedule-details">
                         ${item.details.map(detail => `
@@ -429,14 +452,6 @@ function displaySchedule(scheduleItems) {
                                 ${detail.text}
                             </span>
                         `).join('')}
-                    </div>
-                ` : ''}
-                ${item.speakers ? `
-                    <div class="speakers">
-                        <h4>Speakers:</h4>
-                        <ul>
-                            ${item.speakers.map(speaker => `<li>${speaker}</li>`).join('')}
-                        </ul>
                     </div>
                 ` : ''}
             </div>
