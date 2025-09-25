@@ -60,16 +60,24 @@ function animateOnScroll() {
         }
     });
 
-    // New scroll reveal system
+    // New scroll reveal system with timeline synchronization
     const scrollRevealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale, .text-reveal');
     
-    scrollRevealElements.forEach(element => {
+    scrollRevealElements.forEach((element, index) => {
         const elementTop = element.getBoundingClientRect().top;
         const elementBottom = element.getBoundingClientRect().bottom;
         const elementVisible = 100;
         
         if (elementTop < window.innerHeight - elementVisible && elementBottom > 0) {
             element.classList.add('revealed');
+            
+            // Special handling for schedule items to create synchronized timeline
+            if (element.classList.contains('schedule-item')) {
+                // Add a small delay to make the timeline segment appear with the content
+                setTimeout(() => {
+                    element.classList.add('timeline-revealed');
+                }, 200);
+            }
         }
     });
 
