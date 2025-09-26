@@ -1465,6 +1465,35 @@ h4 { font-size: 1.5rem; }
         grid-template-columns: 1fr;
     }
 
+    /* Mobile layout for overview content - stats first, then text */
+    .overview-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .overview-stats {
+        order: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
+        padding: 3rem 1rem;
+        margin: 0 auto;
+        max-width: 300px;
+    }
+
+    .stat-card {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .overview-text {
+        order: 2;
+    }
+
     .cta-buttons {
         flex-direction: column;
         align-items: center;
@@ -1510,13 +1539,13 @@ h4 { font-size: 1.5rem; }
     }
 
     .timeline::before {
-        left: 20px;
+        display: none;
     }
 
     .timeline-item {
         flex-direction: column;
         align-items: flex-start;
-        padding-left: 60px;
+        padding-left: 0;
     }
 
     .timeline-year {
