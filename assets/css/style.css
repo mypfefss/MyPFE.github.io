@@ -2111,6 +2111,7 @@ h4 { font-size: 1.5rem; }
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
+    text-align: center;
 }
 
 .card-content .btn {
@@ -2123,8 +2124,8 @@ h4 { font-size: 1.5rem; }
 .benefits-list {
     list-style: none;
     padding: 0;
-    text-align: left;
-    margin-bottom: 2rem;
+    text-align: center;
+    margin-bottom: 0rem;
 }
 
 .benefits-list li {
@@ -2141,7 +2142,8 @@ h4 { font-size: 1.5rem; }
 
 /* add a little breathing room above the first benefit in the student card */
 .student-card .benefits-list {
-    margin-top: 3rem;
+    margin-top: 0rem;
+    margin-bottom: 3rem;
 }
 
 /* Modal Styles */
