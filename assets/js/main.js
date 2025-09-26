@@ -444,11 +444,13 @@ function displaySchedule(scheduleItems) {
                     </div>
                 ` : ''}
                 
-                ${item.tags && item.tags.length > 0 ? `
+                ${item.tags && item.tags.length > 0 || item.time || item.location ? `
                     <div class="schedule-tags">
-                        ${item.tags.map(tag => `
+                        ${item.time ? `<span class="schedule-tag tag-time">${item.time}</span>` : ''}
+                        ${item.location ? `<span class="schedule-tag tag-place">${item.location}</span>` : ''}
+                        ${item.tags ? item.tags.map(tag => `
                             <span class="schedule-tag tag-${tag}">${tag}</span>
-                        `).join('')}
+                        `).join('') : ''}
                     </div>
                 ` : ''}
                 

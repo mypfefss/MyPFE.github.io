@@ -1598,11 +1598,11 @@ h4 { font-size: 1.5rem; }
     .detailed-schedule .schedule-item {
         flex-direction: column;
         align-items: flex-start;
-        background: var(--background-light);
-        border-radius: 12px;
-        padding: 1.5rem;
+        background: transparent;
+        border-radius: 0;
+        padding: 0;
         margin-bottom: 1.5rem;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
 
     .detailed-schedule .schedule-content {
@@ -1611,46 +1611,9 @@ h4 { font-size: 1.5rem; }
         width: 100%;
     }
 
-    /* Show time and location at top of card on mobile */
+    /* Hide schedule-time on mobile */
     .detailed-schedule .schedule-time {
-        width: 100% !important;
-        text-align: center !important;
-        padding: 0 !important;
-        margin-bottom: 1rem;
-        order: -1; /* Move to top */
-        background: var(--primary-color);
-        color: white;
-        padding: 0.75rem 1rem !important;
-        border-radius: 8px;
-        margin: -1.5rem -1.5rem 1rem -1.5rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 1rem;
-        margin-left: 0.1rem;
-    }
-
-    .detailed-schedule .schedule-time .time {
-        color: white;
-        font-size: 1.1rem;
-        font-weight: 700;
-        text-align: center;
-        margin-right: 0;
-        display: inline-block;
-    }
-
-    .detailed-schedule .schedule-time .duration {
-        color: rgba(255,255,255,0.9);
-        font-size: 0.9rem;
-        text-align: center;
-        margin-right: 0;
-        display: inline-block;
-    }
-
-    .detailed-schedule .schedule-time .duration::before {
-        content: "📍 ";
-        margin-right: 0.25rem;
+        display: none !important;
     }
 
     /* Hide timeline and circular marks on mobile */
@@ -1660,6 +1623,31 @@ h4 { font-size: 1.5rem; }
 
     .schedule-time::after {
         display: none !important;
+    }
+
+    /* Hide speaker/instructor info on mobile */
+    .speaker-info {
+        display: none !important;
+    }
+
+    /* Remove featured effects on mobile */
+    .schedule-item.featured .schedule-content {
+        border-left: none !important;
+        background: transparent !important;
+    }
+
+    .schedule-item.featured .schedule-content::before {
+        display: none !important;
+    }
+
+    /* Remove orange top border from schedule cards */
+    .schedule-content::before {
+        display: none !important;
+    }
+
+    /* Give all schedule items same near-white background */
+    .detailed-schedule .schedule-item {
+        background: #fafafa !important;
     }
 }
 
@@ -1980,6 +1968,8 @@ h4 { font-size: 1.5rem; }
 .tag-lunch { background: rgba(46, 204, 113, 0.15); color: #27ae60; }
 .tag-social { background: rgba(52, 152, 219, 0.15); color: #3498db; }
 .tag-ai { background: linear-gradient(45deg, rgba(139, 21, 56, 0.2), rgba(52, 152, 219, 0.2)); color: var(--primary-color); }
+.tag-time { background: var(--primary-color); color: white; font-weight: 600; }
+.tag-place { background: var(--primary-color); color: white; font-weight: 600; }
 
 .schedule-tag:hover {
     transform: translateY(-1px);
