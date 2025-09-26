@@ -1704,7 +1704,7 @@ h4 { font-size: 1.5rem; }
 .schedule-item::after {
     content: '';
     position: absolute;
-    left: 398px;
+    left: 318px;
     top: 0;
     height: calc(100% + 3rem);
     width: 3px;
@@ -1744,7 +1744,7 @@ h4 { font-size: 1.5rem; }
 }
 
 .schedule-time {
-    width: 400px;
+    width: 320px;
     text-align: right;
     padding-right: 2rem;
     flex-shrink: 0;

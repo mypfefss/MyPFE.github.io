@@ -424,8 +424,6 @@ function displaySchedule(scheduleItems) {
     const html = scheduleItems.map((item, index) => `
         <div class="schedule-item ${item.featured ? 'featured' : ''} scroll-reveal delay-${Math.min(index + 1, 6)}">
             <div class="schedule-time">
-                <span class="time">${item.time}</span>
-                ${item.location ? `<span class="duration">${item.location}</span>` : ''}
             </div>
             <div class="schedule-content">
                 <h3>${item.title}</h3>
