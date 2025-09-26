@@ -1478,15 +1478,23 @@ h4 { font-size: 1.5rem; }
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 2.5rem;
-        padding: 3rem 1rem;
+        gap: 3rem;
+        padding: 4rem 1.5rem;
         margin: 0 auto;
-        max-width: 300px;
+        max-width: 400px;
+        width: 100%;
     }
 
     .stat-card {
         width: 100%;
+        max-width: 350px;
         text-align: center;
+        justify-content: center;
+        padding: 2.5rem 2rem;
+        min-height: 150px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
     }
 
@@ -2252,7 +2260,6 @@ h4 { font-size: 1.5rem; }
 /* add a little breathing room above the first benefit in the student card */
 .student-card .benefits-list {
     margin-top: 0rem;
-    margin-bottom: 3rem;
 }
 
 /* Modal Styles */
