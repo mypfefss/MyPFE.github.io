@@ -821,13 +821,13 @@ h4 { font-size: 1.5rem; }
 }
 
 .organizer-content.reverse {
-    background: var(--primary-color);
-    color: var(--white);
+    background: var(--white);
+    color: var(--text-color);
 }
 
 .organizer-content.reverse h3,
 .organizer-content.reverse p {
-    color: var(--white);
+    color: var(--text-color);
 }
 
 .organizer-info {
@@ -848,7 +848,7 @@ h4 { font-size: 1.5rem; }
 }
 
 .organizer-subtitle {
-    color: var(--accent-color);
+    color: var(--primary-color);
     font-weight: 600;
     margin-bottom: 1rem !important;
 }
@@ -871,7 +871,7 @@ h4 { font-size: 1.5rem; }
 }
 
 .organizer-content.reverse .mini-stat .number {
-    color: var(--white);
+    color: var(--primary-color);
 }
 
 .mini-stat .label {
@@ -889,7 +889,7 @@ h4 { font-size: 1.5rem; }
 
 .achievement,
 .tech-tag {
-    background: var(--accent-color);
+    background: var(--primary-color);
     color: var(--white);
     padding: 0.5rem 1rem;
     border-radius: 20px;
