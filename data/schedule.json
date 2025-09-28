@@ -1,96 +1,13 @@
 {
   "schedule": [
     {
-      "time": "08:30 - 09:00",
-      "title": "Registration & Welcome Coffee",
-      "description": "Check-in, networking breakfast, and event materials distribution",
+      "time": "November 16, 2025",
+      "title": "MyPFE 14.0",
+      "description": "Stay tuned",
       "speaker": null,
-      "location": "Main Lobby",
-      "tags": ["networking", "registration"],
-      "featured": false
-    },
-    {
-      "time": "09:00 - 09:30",
-      "title": "Opening Ceremony",
-      "description": "Official welcome address, event overview, and keynote introduction",
-      "speaker": {
-        "name": "Dr. Ahmed Ben Salem",
-        "title": "Dean of Faculty of Sciences",
-        "company": "University of Sfax"
-      },
-      "location": "Main Auditorium",
-      "tags": ["ceremony", "keynote"],
+      "location": "Faculty of Sciences of Sfax",
+      "tags": null,
       "featured": true
-    },
-    {
-      "time": "09:30 - 10:30",
-      "title": "Keynote: Future of AI in Industry",
-      "description": "Exploring the transformative impact of artificial intelligence on modern businesses and career opportunities in tech",
-      "speaker": {
-        "name": "Eng. Sarah Mansouri",
-        "title": "Senior AI Engineer",
-        "company": "Microsoft Tunisia"
-      },
-      "location": "Main Auditorium",
-      "tags": ["ai", "keynote", "industry"],
-      "featured": true
-    },
-    {
-      "time": "10:45 - 12:15",
-      "title": "Technical Workshops - Session 1",
-      "description": "Parallel hands-on workshops covering web development, mobile apps, and data science fundamentals",
-      "speaker": {
-        "name": "Multiple Industry Experts",
-        "title": "Workshop Facilitators",
-        "company": "Various Tech Companies"
-      },
-      "location": "Workshop Rooms A, B, C",
-      "tags": ["workshop", "hands-on", "technical"],
-      "featured": false
-    },
-    {
-      "time": "12:15 - 13:15",
-      "title": "Networking Lunch",
-      "description": "Enjoy lunch while connecting with fellow students, industry professionals, and potential employers",
-      "speaker": null,
-      "location": "University Cafeteria",
-      "tags": ["networking", "lunch", "social"],
-      "featured": false
-    },
-    {
-      "time": "13:15 - 14:45",
-      "title": "Company Booths & Career Fair",
-      "description": "Explore career opportunities, submit CVs, conduct interviews, and learn about internship programs",
-      "speaker": null,
-      "location": "Exhibition Hall",
-      "tags": ["career", "recruitment", "opportunities"],
-      "featured": true
-    },
-    {
-      "time": "15:00 - 16:30",
-      "title": "Panel Discussion: Industry Trends",
-      "description": "Interactive panel featuring CEOs and tech leaders discussing current market trends and future career paths",
-      "speaker": {
-        "name": "Industry Panel",
-        "title": "Tech Leaders & CEOs",
-        "company": "Leading Tech Companies"
-      },
-      "location": "Main Auditorium",
-      "tags": ["panel", "trends", "leadership"],
-      "featured": true
-    },
-    {
-      "time": "16:45 - 17:30",
-      "title": "Closing Ceremony & Awards",
-      "description": "Recognition of outstanding participants, closing remarks, and announcement of next year's event",
-      "speaker": {
-        "name": "Event Organizing Committee",
-        "title": "IEEE FSS & Partners",
-        "company": "University of Sfax"
-      },
-      "location": "Main Auditorium",
-      "tags": ["ceremony", "awards", "closing"],
-      "featured": false
     }
   ]
 }

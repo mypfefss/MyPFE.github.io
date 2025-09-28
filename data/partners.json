@@ -2,51 +2,83 @@
   "formerPartners": [
     {
       "id": 1,
-      "name": "TechCorp Solutions",
-      "logo": "../assets/images/partners/partner1.png",
-      "website": "https://techcorp.com",
-      "category": "Technology",
-      "year": "2024"
+      "name": "Primatec",
+      "logo": "../assets/images/former-partners/primatec.jpg"
     },
     {
       "id": 2,
-      "name": "InnovateLab",
-      "logo": "../assets/images/partners/partner2.png",
-      "website": "https://innovatelab.com",
-      "category": "Software Development",
-      "year": "2024"
+      "name": "Spark-IT",
+      "logo": "../assets/images/former-partners/spark-it.png"
     },
     {
       "id": 3,
-      "name": "DataFlow Systems",
-      "logo": "../assets/images/partners/partner3.png",
-      "website": "https://dataflow.com",
-      "category": "Data Analytics",
-      "year": "2023"
+      "name": "Sifast",
+      "logo": "../assets/images/former-partners/sifast-logo.svg"
     },
     {
       "id": 4,
-      "name": "CloudTech Industries",
-      "logo": "../assets/images/partners/partner4.png",
-      "website": "https://cloudtech.com",
-      "category": "Cloud Services",
-      "year": "2023"
+      "name": "Tunisie Telecom",
+      "logo": "../assets/images/former-partners/sigle TT.png"
     },
     {
       "id": 5,
-      "name": "AI Dynamics",
-      "logo": "../assets/images/partners/partner5.png",
-      "website": "https://aidynamics.com",
-      "category": "Artificial Intelligence",
-      "year": "2024"
+      "name": "Piximind",
+      "logo": "../assets/images/former-partners/piximind.svg"
     },
     {
       "id": 6,
-      "name": "SecureNet Solutions",
-      "logo": "../assets/images/partners/partner6.png",
-      "website": "https://securenet.com",
-      "category": "Cybersecurity",
-      "year": "2024"
+      "name": "BWS",
+      "logo": "../assets/images/former-partners/LOGO BWS-bleu.png"
+    },
+    {
+      "id": 7,
+      "name": "Costart",
+      "logo": "../assets/images/former-partners/costart.png"
+    },
+    {
+      "id": 8,
+      "name": "Datasphera",
+      "logo": "../assets/images/former-partners/datasphera.png"
+    },
+    {
+      "id": 9,
+      "name": "Djagora",
+      "logo": "../assets/images/former-partners/djagora.png"
+    },
+    {
+      "id": 10,
+      "name": "Infosquare",
+      "logo": "../assets/images/former-partners/infosquare.png"
+    },
+    {
+      "id": 11,
+      "name": "Erasmus Program",
+      "logo": "../assets/images/former-partners/logo erasmus-Final.png"
+    },
+    {
+      "id": 12,
+      "name": "FOD",
+      "logo": "../assets/images/former-partners/logo fod.png"
+    },
+    {
+      "id": 13,
+      "name": "ODC",
+      "logo": "../assets/images/former-partners/odc.png"
+    },
+    {
+      "id": 14,
+      "name": "Proged",
+      "logo": "../assets/images/former-partners/proged.png"
+    },
+    {
+      "id": 15,
+      "name": "TDS",
+      "logo": "../assets/images/former-partners/tds.png"
+    },
+    {
+      "id": 16,
+      "name": "Technopole",
+      "logo": "../assets/images/former-partners/technopole.png"
     }
   ]
 }

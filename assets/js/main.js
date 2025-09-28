@@ -602,8 +602,7 @@ function displayFormerPartners(partners) {
             <img src="${partner.logo}" alt="${partner.name}" title="${partner.name} - ${partner.category}">
             <div class="partner-info">
                 <h4>${partner.name}</h4>
-                <p>${partner.category}</p>
-                <span class="partner-year">${partner.year}</span>
+                
             </div>
         </div>
     `).join('');
